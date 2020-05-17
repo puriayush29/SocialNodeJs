@@ -8,7 +8,7 @@ const _ = require('lodash');
 const app = express();
 
 const LOCAL_URL = 'http://localhost:8100';
-const DEPLOY_URL = 'https://pure-hamlet-77613.herokuapp.com/';
+const DEPLOY_URL = 'https://pure-hamlet-77613.herokuapp.com/api/chatapp/login';
 var corsUrl;
 
 if (process.env.NODE_ENV === 'development') {
