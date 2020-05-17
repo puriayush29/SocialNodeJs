@@ -7,7 +7,19 @@ const _ = require('lodash');
 
 const app = express();
 
-app.use(cors());
+const LOCAL_URL = 'http://localhost:8100';
+const DEPLOY_URL = 'https://pure-hamlet-77613.herokuapp.com/';
+var corsUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  corsUrl = process.env.LOCAL_URL  // http://localhost:8080
+} else if (process.env.NODE_ENV === 'production') {
+  corsUrl = process.env.DEPLOY_URL // http://myapp.com
+}
+
+app.use(cors({
+  origin: corsUrl
+}))
 
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
