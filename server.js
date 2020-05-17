@@ -54,6 +54,11 @@ app.use('/api/chatapp', friends);
 app.use('/api/chatapp', message);
 app.use('/api/chatapp', image);
 
-server.listen(3000, () => {
-	console.log('Running on port 3000');
-});
+// server.listen(3000, () => {
+// 	console.log('Running on port 3000');
+// });
+let port = process.env.PORT;
+if(port == null || port == "") {
+	port = 8000;
+}
+server.listen(port);
